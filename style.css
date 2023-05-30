@@ -1,0 +1,50 @@
+:root {
+  font-size: 16px;
+  background-color: aqua;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1.title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+form.tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+input.task-name {
+  width: 500px;
+  height: 30px;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+input::placeholder {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+}
+
+select#priority {
+  width: 100px;
+  height: 35px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+}
+
+button.add {
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  width: 50px;
+  height: 35px;
+  background-color: aqua;
+  border-color: blue;
+}
