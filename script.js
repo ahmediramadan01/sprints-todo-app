@@ -1,7 +1,7 @@
 "use strict";
 
-const taskName = document.querySelector(".name");
-const taskPriority = document.querySelector("#priority");
+const taskName = document.querySelector(".task-name");
+const taskPriority = document.querySelector("#task-priority");
 
 const btnAdd = document.querySelector(".add");
 const btnsRemove = document.querySelectorAll(".remove");

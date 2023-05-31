@@ -13,9 +13,9 @@
 
 <body>
     <h1 class="title">To-Do App</h1>
-    <div class="new">
-        <input type="text" placeholder="Task name..." class="name">
-        <select name="priority" id="priority">
+    <div class="new-task">
+        <input type="text" placeholder="Task name..." class="task-name">
+        <select name="priority" id="task-priority">
             <option value="High" id="high">High</option>
             <option value="Medium" id="medium">Medium</option>
             <option value="Low" id="low">Low</option>
@@ -25,10 +25,10 @@
     <table class="table hidden">
         <thead>
             <tr>
-                <td>#</td>
-                <td>Task Name</td>
-                <td>Priority</td>
-                <td>Actions</td>
+                <td class="no-cell">#</td>
+                <td class="task-cell">Task Name</td>
+                <td class="priority-cell">Priority</td>
+                <td class="actions-cell">Actions</td>
             </tr>
         </thead>
         <tbody class="table-body"></tbody>
