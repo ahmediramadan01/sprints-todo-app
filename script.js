@@ -20,7 +20,7 @@ const createTable = function () {
         <td>${tasks[i][0]}</td>
         <td>${tasks[i][1]}</td>
         <td>
-        <button id="${i}" class="edit" onclick="editTask(${i})">Edit</button>  
+        <button id="${i}" class="edit" onclick="editTask(${i})">Edit</button>
         <button id="${i}" class="remove" onclick="removeTask(${i})">Remove</button></td>
     </tr>
     `;
@@ -38,6 +38,11 @@ const addTask = function () {
     createTable();
   }
 };
+
+function editTask(n) {
+  tasks[n][0] = `<input class="edit-task type="text">`;
+  createTable();
+}
 
 function removeTask(x) {
   tasks.splice(x, 1);

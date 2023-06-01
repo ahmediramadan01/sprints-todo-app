@@ -35,6 +35,16 @@ input.task-name {
   font-size: 1.3vw;
 }
 
+input.edit-task {
+  width: 30vw;
+  height: 30px;
+  padding: 0 5px;
+  flex-shrink: 1;
+  border-radius: 5px;
+  font-family: var(--font);
+  font-size: 1.3vw;
+}
+
 input.task-name::placeholder {
   font-family: var(--font);
   font-size: 1.3vw;
@@ -77,7 +87,6 @@ button.add:hover {
 button.edit {
   width: 5vw;
   height: 40px;
-  margin-right: 0.1vw;
   flex-shrink: 1;
   border-radius: 5px;
   font-family: var(--font);
@@ -141,11 +150,11 @@ tbody {
 }
 
 .priority-cell {
-  width: 9vw;
+  width: 1vw;
 }
 
 .actions-cell {
-  width: 10vw;
+  width: 9.7vw;
 }
 
 .hidden {
