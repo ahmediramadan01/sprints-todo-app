@@ -4,7 +4,6 @@ const taskName = document.querySelector(".task-name");
 const taskPriority = document.querySelector("#task-priority");
 
 const btnAdd = document.querySelector(".add");
-const btnsRemove = document.querySelectorAll(".remove");
 
 const table = document.querySelector(".table");
 const tableBody = document.querySelector(".table-body");
@@ -36,6 +35,7 @@ const addTask = function () {
     }
     tasks.push([taskName.value, taskPriority.value]);
     createTable();
+    taskName.value = "";
   }
 };
 
