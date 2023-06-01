@@ -95,7 +95,8 @@ button.add:hover {
   font-weight: bold;
 }
 
-button.edit {
+button.edit,
+button.save {
   width: 5vw;
   height: 40px;
   flex-shrink: 1;
@@ -108,12 +109,14 @@ button.edit {
   text-align: center;
 }
 
-button.edit:hover {
+button.edit:hover,
+button.save:hover {
   background-color: #14532d;
   font-weight: bold;
 }
 
-button.remove {
+button.remove,
+button.cancel {
   width: 6.5vw;
   height: 40px;
   flex-shrink: 1;
@@ -126,7 +129,8 @@ button.remove {
   text-align: center;
 }
 
-button.remove:hover {
+button.remove:hover,
+button.cancel:hover {
   background-color: #7f1d1d;
   font-weight: bold;
 }
