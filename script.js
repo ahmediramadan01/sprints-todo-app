@@ -19,7 +19,9 @@ const createTable = function () {
         <td>${i + 1}</td>
         <td>${tasks[i][0]}</td>
         <td>${tasks[i][1]}</td>
-        <td><button id="${i}" class="remove" onclick="removeTask(${i})">Remove</button></td>
+        <td>
+        <button id="${i}" class="edit" onclick="editTask(${i})">Edit</button>  
+        <button id="${i}" class="remove" onclick="removeTask(${i})">Remove</button></td>
     </tr>
     `;
   }
