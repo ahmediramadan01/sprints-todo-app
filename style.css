@@ -61,6 +61,17 @@ select#task-priority {
   background-color: white;
 }
 
+select#edit-priority {
+  width: 7vw;
+  height: 35px;
+  padding: 0 5px;
+  flex-shrink: 1;
+  border-radius: 5px;
+  font-family: var(--font);
+  font-size: 1.3vw;
+  background-color: white;
+}
+
 button {
   cursor: pointer;
   font-family: var(--font);

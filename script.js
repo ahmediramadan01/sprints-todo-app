@@ -41,6 +41,13 @@ const addTask = function () {
 
 function editTask(n) {
   tasks[n][0] = `<input class="edit-task type="text">`;
+  tasks[n][1] = `
+  <select name="priority" id="edit-priority">
+    <option value="High" id="high">High</option>
+    <option value="Medium" id="medium">Medium</option>
+    <option value="Low" id="low">Low</option>
+  </select>
+  `;
   createTable();
 }
 
