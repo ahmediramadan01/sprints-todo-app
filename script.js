@@ -8,6 +8,10 @@ const btnAdd = document.querySelector(".add");
 const table = document.querySelector(".table");
 const tableBody = document.querySelector(".table-body");
 
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const btnCloseModal = document.querySelector(".close-modal");
+
 let tasks = [];
 
 const createTable = function (tasksList) {
@@ -30,7 +34,7 @@ const createTable = function (tasksList) {
 
 const addTask = function () {
   if (taskName.value === "") {
-    alert("Please enter a Task");
+    openModal();
   } else {
     if (tasks.length === 0) {
       table.classList.remove("hidden");
@@ -80,4 +84,28 @@ function saveTask(n) {
   }
 }
 
+const openModal = function () {
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+const closeModal = function () {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
+
 btnAdd.addEventListener("click", addTask);
+btnCloseModal.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
