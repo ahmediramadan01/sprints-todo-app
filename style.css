@@ -62,7 +62,7 @@ select#task-priority {
 }
 
 select#edit-priority {
-  width: 7vw;
+  width: 6.5vw;
   height: 35px;
   padding: 0 5px;
   flex-shrink: 1;
