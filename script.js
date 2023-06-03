@@ -3,14 +3,14 @@
 const taskName = document.querySelector(".task-name");
 const taskPriority = document.querySelector("#task-priority");
 
-const btnAdd = document.querySelector(".add");
+const addBtn = document.querySelector(".add");
 
 const table = document.querySelector(".table");
 const tableBody = document.querySelector(".table-body");
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
-const btnCloseModal = document.querySelector(".close-modal");
+const closeModalBtn = document.querySelector(".close-modal");
 
 let tasks = [];
 
@@ -35,7 +35,8 @@ const renderTable = function () {
     `;
   }
 };
-const getSelect = (i) => {
+
+const getSelect = function (i) {
   return `<select name="priority" class="edit-priority" id="edit-priority-${i}">
   <option value="High" id="high" ${
     tasks[i][1] == "High" ? "selected" : ""
@@ -48,8 +49,9 @@ const getSelect = (i) => {
   }>Low</option>
 </select>`;
 };
+
 const addTask = function () {
-  if (taskName.value === "") {
+  if (taskName.value.trim() === "") {
     openModal();
   } else {
     if (tasks.length === 0) {
@@ -61,31 +63,31 @@ const addTask = function () {
   }
 };
 
-function removeTask(n) {
-  tasks.splice(n, 1);
+const removeTask = function (i) {
+  tasks.splice(i, 1);
   renderTable(tasks);
   if (tasks.length === 0) {
     table.classList.add("hidden");
   }
-}
+};
 
-function currentTask(n) {
-  return tasks[n];
-}
+const currentTask = function (i) {
+  return tasks[i];
+};
 
-function editTask(n) {
-  tasks[n][2] = true;
+const editTask = function (i) {
+  tasks[i][2] = true;
   renderTable(tasks);
-  document.querySelector(`#save-${n}`).classList.remove("hidden");
-  document.querySelector(`#edit-${n}`).classList.add("hidden");
-}
+  document.querySelector(`#save-${i}`).classList.remove("hidden");
+  document.querySelector(`#edit-${i}`).classList.add("hidden");
+};
 
-function saveTask(n) {
-  tasks[n][0] = document.querySelector(`#edit-task-${n}`).value;
-  tasks[n][1] = document.querySelector(`#edit-priority-${n}`).value;
-  tasks[n][2] = false;
+const saveTask = function (i) {
+  tasks[i][0] = document.querySelector(`#edit-task-${i}`).value;
+  tasks[i][1] = document.querySelector(`#edit-priority-${i}`).value;
+  tasks[i][2] = false;
   renderTable(tasks);
-}
+};
 
 const openModal = function () {
   modal.classList.remove("hidden");
@@ -97,16 +99,10 @@ const closeModal = function () {
   overlay.classList.add("hidden");
 };
 
-btnAdd.addEventListener("click", addTask);
-btnCloseModal.addEventListener("click", closeModal);
+addBtn.addEventListener("click", addTask);
+
+closeModalBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
-});
-
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
