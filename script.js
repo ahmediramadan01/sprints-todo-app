@@ -14,7 +14,7 @@ const btnCloseModal = document.querySelector(".close-modal");
 
 let tasks = [];
 
-const createTable = function () {
+const renderTable = function () {
   tableBody.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
     tableBody.innerHTML += `
@@ -56,14 +56,14 @@ const addTask = function () {
       table.classList.remove("hidden");
     }
     tasks.push([taskName.value, taskPriority.value, false]);
-    createTable(tasks);
+    renderTable(tasks);
     taskName.value = "";
   }
 };
 
 function removeTask(n) {
   tasks.splice(n, 1);
-  createTable(tasks);
+  renderTable(tasks);
   if (tasks.length === 0) {
     table.classList.add("hidden");
   }
@@ -75,8 +75,7 @@ function currentTask(n) {
 
 function editTask(n) {
   tasks[n][2] = true;
-  createTable(tasks);
-
+  renderTable(tasks);
   document.querySelector(`#save-${n}`).classList.remove("hidden");
   document.querySelector(`#edit-${n}`).classList.add("hidden");
 }
@@ -85,7 +84,7 @@ function saveTask(n) {
   tasks[n][0] = document.querySelector(`#edit-task-${n}`).value;
   tasks[n][1] = document.querySelector(`#edit-priority-${n}`).value;
   tasks[n][2] = false;
-  createTable(tasks);
+  renderTable(tasks);
 }
 
 const openModal = function () {
