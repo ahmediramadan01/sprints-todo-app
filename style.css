@@ -61,7 +61,7 @@ select#task-priority {
   background-color: white;
 }
 
-select#edit-priority {
+select.edit-priority {
   width: 6.5vw;
   height: 35px;
   padding: 0 5px;
@@ -109,10 +109,18 @@ button.save {
   text-align: center;
 }
 
+button.save {
+  background-color: #2563eb;
+}
+
 button.edit:hover,
 button.save:hover {
   background-color: #14532d;
   font-weight: bold;
+}
+
+button.save:hover {
+  background-color: #1e3a8a;
 }
 
 button.remove,

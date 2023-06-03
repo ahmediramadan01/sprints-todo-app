@@ -14,24 +14,40 @@ const btnCloseModal = document.querySelector(".close-modal");
 
 let tasks = [];
 
-const createTable = function (tasksList) {
+const createTable = function () {
   tableBody.innerHTML = "";
-  for (let i = 0; i < tasksList.length; i++) {
+  for (let i = 0; i < tasks.length; i++) {
     tableBody.innerHTML += `
     <tr">
         <td>${i + 1}</td>
-        <td>${tasks[i][0]}</td>
-        <td>${tasks[i][1]}</td>
+        <td>${
+          tasks[i][2]
+            ? `<input id="edit-task-${i}" class="edit-task" type="text" value="${tasks[i][0]}">`
+            : tasks[i][0]
+        }</td>
+        <td>${tasks[i][2] ? getSelect(i) : tasks[i][1]}</td>
         <td>
-          <button id="${i}" class="edit" onclick="editTask(${i})">Edit</button>
-          <button id="${i}" class="save hidden" onclick="saveTask(${i})">Save</button>
-          <button id="${i}" class="remove" onclick="removeTask(${i})">Remove</button>
+          <button data-id="${i}" id="edit-${i}" class="edit" onclick="editTask(${i})">Edit</button>
+          <button data-id="${i}" id="save-${i}" class="save hidden" onclick="saveTask(${i})">Save</button>
+          <button data-id="${i}" id="remove-${i}" class="remove" onclick="removeTask(${i})">Remove</button>
         </td>
     </tr>
     `;
   }
 };
-
+const getSelect = (i) => {
+  return `<select name="priority" class="edit-priority" id="edit-priority-${i}">
+  <option value="High" id="high" ${
+    tasks[i][1] == "High" ? "selected" : ""
+  }>High</option>
+  <option value="Medium" id="medium" ${
+    tasks[i][1] == "Medium" ? "selected" : ""
+  }>Medium</option>
+  <option value="Low" id="low" ${
+    tasks[i][1] == "Low" ? "selected" : ""
+  }>Low</option>
+</select>`;
+};
 const addTask = function () {
   if (taskName.value === "") {
     openModal();
@@ -39,49 +55,37 @@ const addTask = function () {
     if (tasks.length === 0) {
       table.classList.remove("hidden");
     }
-    tasks.push([taskName.value, taskPriority.value]);
+    tasks.push([taskName.value, taskPriority.value, false]);
     createTable(tasks);
     taskName.value = "";
   }
 };
 
-function removeTask(x) {
-  tasks.splice(x, 1);
+function removeTask(n) {
+  tasks.splice(n, 1);
   createTable(tasks);
   if (tasks.length === 0) {
     table.classList.add("hidden");
   }
 }
 
-// function currentTask(n) {
-//   return [tasks[n][0], tasks[n][1]];
-// }
+function currentTask(n) {
+  return tasks[n];
+}
 
 function editTask(n) {
-  let taskNameCopy = tasks[n][0];
-  let taskPriorityCopy = tasks[n][1];
-  tasks[n][0] = `<input class="edit-task type="text">`;
-  tasks[n][1] = `
-  <select name="priority" id="edit-priority">
-    <option value="High" id="high">High</option>
-    <option value="Medium" id="medium">Medium</option>
-    <option value="Low" id="low">Low</option>
-  </select>
-  `;
+  tasks[n][2] = true;
   createTable(tasks);
-  document.querySelector(".edit-task").value = taskNameCopy;
-  document.querySelector("#edit-priority").value = taskPriorityCopy;
 
-  document.querySelector(".edit").classList.add("hidden");
-  document.querySelector(".save").classList.remove("hidden");
+  document.querySelector(`#save-${n}`).classList.remove("hidden");
+  document.querySelector(`#edit-${n}`).classList.add("hidden");
 }
 
 function saveTask(n) {
-  if (document.querySelector(".edit-task").value !== "") {
-    tasks[n][0] = document.querySelector(".edit-task").value;
-    tasks[n][1] = document.querySelector("#edit-priority").value;
-    createTable(tasks);
-  }
+  tasks[n][0] = document.querySelector(`#edit-task-${n}`).value;
+  tasks[n][1] = document.querySelector(`#edit-priority-${n}`).value;
+  tasks[n][2] = false;
+  createTable(tasks);
 }
 
 const openModal = function () {
