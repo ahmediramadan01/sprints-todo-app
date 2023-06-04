@@ -4,6 +4,7 @@ const taskName = document.querySelector(".task-name");
 const taskPriority = document.querySelector("#task-priority");
 
 const addBtn = document.querySelector(".add");
+const sortBtn = document.querySelector(".sort");
 
 const table = document.querySelector(".table");
 const tableBody = document.querySelector(".table-body");
@@ -13,6 +14,7 @@ const overlay = document.querySelector(".overlay");
 const closeModalBtn = document.querySelector(".close-modal");
 
 let tasks = [];
+let sortingPriority = ["High", "Medium", "Low"];
 
 const renderTable = function () {
   tableBody.innerHTML = "";
@@ -89,6 +91,13 @@ const saveTask = function (i) {
   renderTable(tasks);
 };
 
+const sortTasks = function () {
+  tasks.sort(
+    (a, b) => sortingPriority.indexOf(a[1]) - sortingPriority.indexOf(b[1])
+  );
+  renderTable();
+};
+
 const openModal = function () {
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
@@ -100,6 +109,7 @@ const closeModal = function () {
 };
 
 addBtn.addEventListener("click", addTask);
+sortBtn.addEventListener("click", sortTasks);
 
 closeModalBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
