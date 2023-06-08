@@ -95,10 +95,14 @@ class Task {
   }
 
   saveTask(i) {
-    this.tasks[i][0] = document.querySelector(`#edit-task-${i}`).value;
-    this.tasks[i][1] = document.querySelector(`#edit-priority-${i}`).value;
-    this.tasks[i][2] = false;
-    this.renderTable();
+    if (document.querySelector(`#edit-task-${i}`).value === "") {
+      this.openModal();
+    } else {
+      this.tasks[i][0] = document.querySelector(`#edit-task-${i}`).value;
+      this.tasks[i][1] = document.querySelector(`#edit-priority-${i}`).value;
+      this.tasks[i][2] = false;
+      this.renderTable();
+    }
   }
 
   sortTasks() {
