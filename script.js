@@ -36,16 +36,18 @@ class Task {
       this.tableBody.innerHTML += `
       <tr">
           <td>${i + 1}</td>
-          <td>${
-            this.tasks[i][2]
-              ? `<input id="edit-task-${i}" class="edit-task" type="text" value="${this.tasks[i][0]}">`
-              : this.tasks[i][0]
-          }</td>
+          <td id="task-${i}">${
+        this.tasks[i][2]
+          ? `<input id="edit-task-${i}" class="edit-task" type="text" value="${this.tasks[i][0]}">`
+          : this.tasks[i][0]
+      }</td>
           <td>${this.tasks[i][2] ? this.getSelect(i) : this.tasks[i][1]}</td>
           <td>
+            <button data-id="${i}" id="done-${i}" class="done" onclick="task.doneTask(${i})">Done</button>
             <button data-id="${i}" id="edit-${i}" class="edit" onclick="task.editTask(${i})">Edit</button>
             <button data-id="${i}" id="save-${i}" class="save hidden" onclick="task.saveTask(${i})">Save</button>
             <button data-id="${i}" id="remove-${i}" class="remove" onclick="task.removeTask(${i})">Remove</button>
+            
           </td>
       </tr>
       `;
@@ -85,6 +87,14 @@ class Task {
     if (this.tasks.length === 0) {
       this.table.classList.add("hidden");
     }
+  }
+
+  doneTask(i) {
+    document.querySelector(`#task-${i}`).classList.toggle("finished");
+
+    document.querySelector(`#done-${i}`).innerHTML === "Done"
+      ? (document.querySelector(`#done-${i}`).innerHTML = "Undone")
+      : (document.querySelector(`#done-${i}`).innerHTML = "Done");
   }
 
   editTask(i) {

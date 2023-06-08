@@ -26,7 +26,7 @@ div.new-task {
 }
 
 input.task-name {
-  width: 50vw;
+  width: 53vw;
   height: 40px;
   padding: 0 10px;
   flex-shrink: 1;
@@ -36,8 +36,8 @@ input.task-name {
 }
 
 input.edit-task {
-  width: 30vw;
-  height: 30px;
+  width: 40vw;
+  height: 40px;
   padding: 0 5px;
   flex-shrink: 1;
   border-radius: 5px;
@@ -62,8 +62,8 @@ select#task-priority {
 }
 
 select.edit-priority {
-  width: 6.5vw;
-  height: 35px;
+  width: 8vw;
+  height: 40px;
   padding: 0 5px;
   flex-shrink: 1;
   border-radius: 5px;
@@ -102,6 +102,24 @@ button.add:hover {
 
 button.sort:hover {
   background-color: #713f12;
+}
+
+button.done {
+  width: 6.5vw;
+  height: 40px;
+  flex-shrink: 1;
+  border-radius: 5px;
+  font-family: var(--font);
+  font-size: 1.3vw;
+  background-color: #4b5563;
+  color: white;
+  border: 2px solid white;
+  text-align: center;
+}
+
+button.done:hover {
+  background-color: #030712;
+  font-weight: bold;
 }
 
 button.edit,
@@ -153,7 +171,7 @@ button.cancel:hover {
 }
 
 table.table {
-  width: calc(75vw + 20px);
+  width: calc(77vw + 20px);
   margin-top: 30px;
   color: white;
   font-family: var(--font);
@@ -178,7 +196,7 @@ tbody {
 }
 
 .task-cell {
-  width: 30vw;
+  width: 42vw;
 }
 
 .priority-cell {
@@ -186,7 +204,7 @@ tbody {
 }
 
 .actions-cell {
-  width: 8vw;
+  width: 18vw;
 }
 
 .hidden {
@@ -239,4 +257,8 @@ tbody {
   color: white;
   background-color: black;
   border-radius: 100%;
+}
+
+.finished {
+  text-decoration: line-through;
 }
