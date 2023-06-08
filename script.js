@@ -7,6 +7,7 @@ class Task {
 
     this.addBtn = document.querySelector(".add");
     this.sortBtn = document.querySelector(".sort");
+    this.removeSelectedBtn = document.querySelector(".remove-selected");
 
     this.table = document.querySelector(".table");
     this.tableBody = document.querySelector(".table-body");
@@ -20,6 +21,10 @@ class Task {
 
     this.addBtn.addEventListener("click", this.addTask.bind(this));
     this.sortBtn.addEventListener("click", this.sortTasks.bind(this));
+    this.removeSelectedBtn.addEventListener(
+      "click",
+      this.removeCheckedTasks.bind(this)
+    );
 
     this.closeModalBtn.addEventListener("click", this.closeModal.bind(this));
     this.overlay.addEventListener("click", this.closeModal.bind(this));
@@ -36,7 +41,7 @@ class Task {
       this.tableBody.innerHTML += `
       <tr">
           <td>${i + 1}</td>
-          <td id="task-${i}">${
+          <td id="task-${i}"><input type="checkbox" id="checked-${i}">${
         this.tasks[i][2]
           ? `<input id="edit-task-${i}" class="edit-task" type="text" value="${this.tasks[i][0]}">`
           : this.tasks[i][0]
@@ -52,6 +57,7 @@ class Task {
       </tr>
       `;
     }
+    console.log(this.tasks);
   }
 
   getSelect(i) {
@@ -78,6 +84,21 @@ class Task {
       this.tasks.push([this.taskName.value, this.taskPriority.value, false]);
       this.renderTable();
       this.taskName.value = "";
+    }
+  }
+
+  removeCheckedTasks() {
+    const checkedIndexes = [];
+
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (document.querySelector(`#checked-${i}`).checked) {
+        checkedIndexes.push(i);
+      }
+    }
+
+    for (let i = checkedIndexes.length - 1; i >= 0; i--) {
+      const index = checkedIndexes[i];
+      this.removeTask(index);
     }
   }
 

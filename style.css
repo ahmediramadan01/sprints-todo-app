@@ -104,6 +104,24 @@ button.sort:hover {
   background-color: #713f12;
 }
 
+button.remove-selected {
+  width: 13vw;
+  height: 40px;
+  flex-shrink: 1;
+  border-radius: 5px;
+  font-family: var(--font);
+  font-size: 1.3vw;
+  background-color: #dc2626;
+  color: white;
+  border: 2px solid white;
+  text-align: center;
+}
+
+button.remove-selected:hover {
+  background-color: #7f1d1d;
+  font-weight: bold;
+}
+
 button.done {
   width: 6.5vw;
   height: 40px;
@@ -171,7 +189,7 @@ button.cancel:hover {
 }
 
 table.table {
-  width: calc(77vw + 20px);
+  width: calc(90vw + 20px);
   margin-top: 30px;
   color: white;
   font-family: var(--font);
@@ -196,7 +214,7 @@ tbody {
 }
 
 .task-cell {
-  width: 42vw;
+  width: 54vw;
 }
 
 .priority-cell {
